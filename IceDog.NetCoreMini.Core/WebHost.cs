@@ -1,4 +1,5 @@
-﻿using IceDog.NetCoreMini.Core.Hosting.Server;
+﻿using IceDog.NetCoreMini.Core.Hosting;
+using IceDog.NetCoreMini.Core.Hosting.Server;
 using IceDog.NetCoreMini.Core.Http;
 using System.Threading.Tasks;
 

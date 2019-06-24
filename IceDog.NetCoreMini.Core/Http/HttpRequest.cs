@@ -1,5 +1,4 @@
-﻿using IceDog.NetCoreMini.Core.Extensions;
-using IceDog.NetCoreMini.Core.Feature;
+﻿using IceDog.NetCoreMini.Core.Http.Features;
 using System;
 using System.Collections.Specialized;
 using System.IO;
@@ -12,7 +11,7 @@ namespace IceDog.NetCoreMini.Core.Http
     public class HttpRequest
     {
         /// <summary>
-        /// 
+        /// http请求特性
         /// </summary>
         private readonly IHttpRequestFeature _feature;
         /// <summary>

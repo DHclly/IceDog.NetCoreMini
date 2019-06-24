@@ -1,8 +1,6 @@
 ﻿using IceDog.NetCoreMini.Core.Builder;
 using IceDog.NetCoreMini.Core.Hosting.Server;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IceDog.NetCoreMini.Core.Hosting
 {
@@ -28,5 +26,11 @@ namespace IceDog.NetCoreMini.Core.Hosting
         /// </summary>
         /// <returns></returns>
         IWebHost Build();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="urls"></param>
+        /// <returns></returns>
+        IWebHostBuilder UseHttpListener(params string[] urls);
     }
 }

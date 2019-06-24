@@ -1,5 +1,4 @@
-﻿using IceDog.NetCoreMini.Core.Feature;
-using System;
+﻿using IceDog.NetCoreMini.Core.Http.Features;
 
 namespace IceDog.NetCoreMini.Core.Http
 {

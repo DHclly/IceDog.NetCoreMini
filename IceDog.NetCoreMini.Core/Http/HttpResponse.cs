@@ -1,6 +1,4 @@
-﻿using IceDog.NetCoreMini.Core.Extensions;
-using IceDog.NetCoreMini.Core.Feature;
-using System;
+﻿using IceDog.NetCoreMini.Core.Http.Features;
 using System.Collections.Specialized;
 using System.IO;
 
@@ -12,7 +10,7 @@ namespace IceDog.NetCoreMini.Core.Http
     public class HttpResponse
     {
         /// <summary>
-        /// 
+        /// http响应特性
         /// </summary>
         private readonly IHttpResponseFeature _feature;
         /// <summary>

@@ -1,16 +1,11 @@
-﻿using IceDog.NetCoreMini.Core.Hosting;
-using IceDog.NetCoreMini.Core.Http;
-using System;
-using System.Collections.Generic;
+﻿using IceDog.NetCoreMini.Core.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IceDog.NetCoreMini.Core.Extensions
 {
-    public static partial class Extension
+    public static partial class HttpResponseWritingExtensions
     {
-        public static IWebHostBuilder UseHttpListener(this IWebHostBuilder builder, params string[] urls)
-    => builder.UseServer(new HttpListenerServer(urls));
 
         public static Task WriteAsync(this HttpResponse response, string contents)
         {
