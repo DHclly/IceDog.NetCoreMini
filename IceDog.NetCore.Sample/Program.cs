@@ -13,17 +13,10 @@ namespace IceDog.NetCore.Sample
             IWebHost webHost = CreateWebHostBuilder(args).Build();
             webHost.Run();
         }
-        /*
+
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
-        */
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-        {
-            IWebHostBuilder webHostBuilder = WebHost.CreateDefaultBuilder(args);
-            webHostBuilder.UseStartup<Startup>();
-            return webHostBuilder;
-        }
 
     }
 }

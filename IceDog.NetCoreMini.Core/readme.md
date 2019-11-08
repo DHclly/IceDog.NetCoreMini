@@ -20,7 +20,7 @@ https://www.cnblogs.com/artech/p/inside-asp-net-core-framework.html
 ## 第二个对象：RequestDelegate
 
 ## 第三个对象：Middleware
-
+ 
 ## 第四个对象：ApplicationBuilder
 
 ## 第五个对象：Server
