@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IceDog.NetCoreMini.Core", "IceDog.NetCoreMini.Core\IceDog.NetCoreMini.Core.csproj", "{008CCB2E-D4DA-47A9-8F70-BFD631185EC9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IceDog.NetCore.Sample", "IceDog.NetCore.Sample\IceDog.NetCore.Sample.csproj", "{C988A563-978F-411E-BF10-F303CAAB7305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IceDog.NetCoreMini.WebServer", "IceDog.NetCoreMini.WebServer\IceDog.NetCoreMini.WebServer.csproj", "{8BD0D187-1E43-4650-9A33-2771F8B52B33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IceDog.NetCoreMini.WebServer", "IceDog.NetCoreMini.WebServer\IceDog.NetCoreMini.WebServer.csproj", "{8BD0D187-1E43-4650-9A33-2771F8B52B33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{80A59275-3528-4176-99D3-C37E7A51C9A5}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+		tutorial.md.md = tutorial.md.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,6 +11,12 @@ namespace IceDog.NetCoreMini.Core.Http
     public class HttpRequest
     {
         /// <summary>
+        /// 自定义构造函数
+        /// </summary>
+        /// <param name="features"></param>
+        public HttpRequest(IFeatureCollection features) => _feature = features.Get<IHttpRequestFeature>();
+
+        /// <summary>
         /// http请求特性
         /// </summary>
         private readonly IHttpRequestFeature _feature;
@@ -26,11 +32,5 @@ namespace IceDog.NetCoreMini.Core.Http
         /// 请求体
         /// </summary>
         public Stream Body => _feature.Body;
-
-        /// <summary>
-        /// 自定义构造函数
-        /// </summary>
-        /// <param name="features"></param>
-        public HttpRequest(IFeatureCollection features) => _feature = features.Get<IHttpRequestFeature>();
     }
 }

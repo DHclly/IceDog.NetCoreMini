@@ -10,6 +10,11 @@ namespace IceDog.NetCoreMini.Core.Http
     public class HttpResponse
     {
         /// <summary>
+        /// 自定义构造函数
+        /// </summary>
+        /// <param name="features"></param>
+        public HttpResponse(IFeatureCollection features) => _feature = features.Get<IHttpResponseFeature>();
+        /// <summary>
         /// http响应特性
         /// </summary>
         private readonly IHttpResponseFeature _feature;
@@ -25,10 +30,5 @@ namespace IceDog.NetCoreMini.Core.Http
         /// 响应状态码
         /// </summary>
         public int StatusCode { get => _feature.StatusCode; set => _feature.StatusCode = value; }
-        /// <summary>
-        /// 自定义构造函数
-        /// </summary>
-        /// <param name="features"></param>
-        public HttpResponse(IFeatureCollection features) => _feature = features.Get<IHttpResponseFeature>();
     }
 }

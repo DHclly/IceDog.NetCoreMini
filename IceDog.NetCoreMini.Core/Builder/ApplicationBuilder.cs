@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IceDog.NetCoreMini.Core.Builder.Internal
+namespace IceDog.NetCoreMini.Core.Builder
 {
     /// <summary>
     /// 
@@ -52,6 +52,11 @@ namespace IceDog.NetCoreMini.Core.Builder.Internal
         {
             _middlewares.Add(middleware);
             return this;
+        }
+
+        public IApplicationBuilder Use(MiddlewareDelegate middleware)
+        {
+            throw new NotImplementedException();
         }
 
         //public IApplicationBuilder Use(MiddlewareDelegate middleware)
