@@ -12,7 +12,7 @@ namespace IceDog.NetCoreMini.Core.Builder
         /// </summary>
         /// <param name="middleware"></param>
         /// <returns></returns>
-        IApplicationBuilder Use(MiddlewareDelegate middleware);
+        ApplicationBuilderWithMiddlewareDelegate Use(MiddlewareDelegate middleware);
         /// <summary>
         /// 构建一个程序用于处理http 请求
         /// </summary>

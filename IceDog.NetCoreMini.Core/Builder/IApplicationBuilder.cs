@@ -14,7 +14,7 @@ namespace IceDog.NetCoreMini.Core.Builder
         /// <returns></returns>
         IApplicationBuilder Use(Func<RequestDelegate, RequestDelegate> middleware);
         /// <summary>
-        /// 构建一个程序用于处理http 请求
+        /// 构建一个用于处理http 请求的程序
         /// </summary>
         /// <returns></returns>
         RequestDelegate Build();

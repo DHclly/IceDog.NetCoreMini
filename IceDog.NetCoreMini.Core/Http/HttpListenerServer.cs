@@ -13,7 +13,7 @@ namespace IceDog.NetCoreMini.Core.Http
     public class HttpListenerServer : IServer
     {
         /// <summary>
-        /// 
+        /// http监听器
         /// </summary>
         private readonly HttpListener _httpListener;
         /// <summary>
@@ -31,26 +31,25 @@ namespace IceDog.NetCoreMini.Core.Http
             _urls = urls.Any() ? urls : new string[] { $"http://localhost:{port}/" };
         }
         /// <summary>
-        /// 
+        /// 异步启动任务
         /// </summary>
-        /// <param name="handler"></param>
+        /// <param name="handler">http处理程序</param>
         /// <returns></returns>
         public async Task StartAsync(RequestDelegate handler)
         {
+            //添加监听url列表
             Array.ForEach(_urls, url => _httpListener.Prefixes.Add(url));
             _httpListener.Start();
+
             while (true)
             {
+                //获取监听器上下文
                 var listenerContext = await _httpListener.GetContextAsync();
-
                 var feature = new HttpListenerFeature(listenerContext);
-
                 var features = new FeatureCollection();
                 features.Set<IHttpRequestFeature>(feature);
                 features.Set<IHttpResponseFeature>(feature);
-
                 var httpContext = new HttpContext(features);
-
                 await handler(httpContext);
                 listenerContext.Response.Close();
             }

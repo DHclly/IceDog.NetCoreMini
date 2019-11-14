@@ -15,29 +15,33 @@ namespace IceDog.NetCoreMini.WebServer
         }
         private static async Task MainAsync()
         {
+            Console.WriteLine("server is running ，please visit http://localhost:5001/");
             await new WebHostBuilder()
                 .UseHttpListener("http://localhost:5001/")
-                .Configure(app => app
-                    .Use(FooMiddleware)
-                    .Use(BarMiddleware)
-                    .Use(BazMiddleware))
+                .Configure(app =>
+                {
+                    app.Use(OneMiddleware)
+                    .Use(TwoMiddleware)
+                    .Use(ThreeMiddleware);
+                })
                 .Build()
                 .StartAsync();
         }
-        public static RequestDelegate FooMiddleware(RequestDelegate next)
-        => async context => {
-            await context.Response.WriteAsync("Foo=>");
+        public static RequestDelegate OneMiddleware(RequestDelegate next)
+        => async context =>
+        {
+            await context.Response.WriteAsync("1=>");
             await next(context);
         };
 
-        public static RequestDelegate BarMiddleware(RequestDelegate next)
-        => async context => {
-            await context.Response.WriteAsync("Bar=>");
-
+        public static RequestDelegate TwoMiddleware(RequestDelegate next)
+        => async context =>
+        {
+            await context.Response.WriteAsync("2=>");
             await next(context);
         };
 
-        public static RequestDelegate BazMiddleware(RequestDelegate next)
-        => context => context.Response.WriteAsync("Baz");
+        public static RequestDelegate ThreeMiddleware(RequestDelegate next)
+        => context => context.Response.WriteAsync("3");
     }
 }

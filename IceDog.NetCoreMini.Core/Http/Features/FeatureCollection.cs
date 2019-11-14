@@ -15,7 +15,7 @@ namespace IceDog.NetCoreMini.Core.Http.Features
         /// <returns></returns>
         public TFeature Get<TFeature>()
         {
-            return this.TryGetValue(typeof(TFeature), out var value) ? (TFeature)value : default(TFeature);
+            return this.TryGetValue(typeof(TFeature), out var value) ? (TFeature)value : default;
         }
         /// <summary>
         /// 设置特性

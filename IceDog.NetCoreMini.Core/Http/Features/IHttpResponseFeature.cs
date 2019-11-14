@@ -9,10 +9,6 @@ namespace IceDog.NetCoreMini.Core.Http.Features
     interface IHttpResponseFeature
     {
         /// <summary>
-        /// 响应状态码
-        /// </summary>
-        int StatusCode { get; set; }
-        /// <summary>
         /// 响应头
         /// </summary>
         NameValueCollection Headers { get; }
@@ -20,5 +16,9 @@ namespace IceDog.NetCoreMini.Core.Http.Features
         /// 响应体
         /// </summary>
         Stream Body { get; }
+        /// <summary>
+        /// 响应状态码
+        /// </summary>
+        int StatusCode { get; set; }
     }
 }

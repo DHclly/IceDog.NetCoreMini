@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 namespace IceDog.NetCoreMini.Core.Builder
 {
     /// <summary>
-    /// 应用构建器
+    /// 
     /// </summary>
-    public class ApplicationBuilder : IApplicationBuilder
+    public class ApplicationBuilderWithMiddlewareDelegate : IApplicationBuilderWithMiddlewareDelegate
     {
         /// <summary>
         /// 中间件列表
         /// </summary>
-        private readonly List<Func<RequestDelegate, RequestDelegate>> _middlewares = new List<Func<RequestDelegate, RequestDelegate>>();
+        private readonly List<MiddlewareDelegate> _middlewares = new List<MiddlewareDelegate>();
 
         /// <summary>
-        /// 构建一个用于处理http 请求的程序
+        /// 
         /// </summary>
         /// <returns></returns>
         public RequestDelegate Build()
@@ -30,9 +30,9 @@ namespace IceDog.NetCoreMini.Core.Builder
                 //，后者会将响应状态码设置为404。所以如果ASP.NET Core应用在没有注册任何中间
                 //的情况下总是会返回一个404的响应。如果所有的中间件在完成了自身的请求处理
                 //任务之后都选择将请求向后分发，同样会返回一个404响应。
-                RequestDelegate next = context =>
+                RequestDelegate next = _ =>
                 {
-                    context.Response.StatusCode = 404;
+                    _.Response.StatusCode = 404;
                     return Task.CompletedTask;
                 };
 
@@ -44,11 +44,11 @@ namespace IceDog.NetCoreMini.Core.Builder
             };
         }
         /// <summary>
-        /// 添加需要的中间件
+        /// 
         /// </summary>
-        /// <param name="middleware">中间件</param>
+        /// <param name="middleware"></param>
         /// <returns></returns>
-        public IApplicationBuilder Use(Func<RequestDelegate, RequestDelegate> middleware)
+        public ApplicationBuilderWithMiddlewareDelegate Use(MiddlewareDelegate middleware)
         {
             _middlewares.Add(middleware);
             return this;
