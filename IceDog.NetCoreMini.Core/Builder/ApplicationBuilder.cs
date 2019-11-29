@@ -26,11 +26,11 @@ namespace IceDog.NetCoreMini.Core.Builder
 
             return httpContext =>
             {
-                //在调用第一个中间件（最后注册）的时候，我们创建了一个RequestDelegate作为输入
+                //在调用第一个中间件（最后注册）的时候，我们创建了一个 RequestDelegate 作为输入
                 //，后者会将响应状态码设置为404。所以如果ASP.NET Core应用在没有注册任何中间
                 //的情况下总是会返回一个404的响应。如果所有的中间件在完成了自身的请求处理
                 //任务之后都选择将请求向后分发，同样会返回一个404响应。
-                RequestDelegate next = context =>
+                RequestDelegate next = context => 
                 {
                     context.Response.StatusCode = 404;
                     return Task.CompletedTask;
