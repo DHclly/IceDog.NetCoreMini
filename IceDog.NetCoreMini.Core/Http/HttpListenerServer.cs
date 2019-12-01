@@ -44,7 +44,7 @@ namespace IceDog.NetCoreMini.Core.Http
             while (true)
             {
                 //获取监听器上下文
-                var listenerContext = await _httpListener.GetContextAsync();
+                HttpListenerContext listenerContext = await _httpListener.GetContextAsync();
                 var feature = new HttpListenerFeature(listenerContext);
                 var features = new FeatureCollection();
                 features.Set<IHttpRequestFeature>(feature);

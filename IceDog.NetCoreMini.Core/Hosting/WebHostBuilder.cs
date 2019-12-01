@@ -18,8 +18,11 @@ namespace IceDog.NetCoreMini.Core.Hosting
         /// <summary>
         /// 配置构建器列表
         /// </summary>
-        private readonly List<Action<IApplicationBuilder>> _configures = new List<Action<IApplicationBuilder>>();
-
+        private readonly List<Action<IApplicationBuilder>> _configures;
+        public WebHostBuilder()
+        {
+            _configures = new List<Action<IApplicationBuilder>>();
+        }
         /// <summary>
         /// 配置构建器
         /// </summary>

@@ -23,9 +23,11 @@ namespace IceDog.NetCoreMini.Core.Builder
         {
             //反转中间件列表的顺序
             _middlewares.Reverse();
-
+            //我在<步骤4.3>调用
             return httpContext =>
             {
+                //我在<步骤5.1.13>调用
+
                 //在调用第一个中间件（最后注册）的时候，我们创建了一个 RequestDelegate 作为输入
                 //，后者会将响应状态码设置为404。所以如果ASP.NET Core应用在没有注册任何中间
                 //的情况下总是会返回一个404的响应。如果所有的中间件在完成了自身的请求处理
