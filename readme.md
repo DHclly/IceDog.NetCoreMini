@@ -324,3 +324,25 @@ app(arr);
 console.log(arr);//1=>,2=>,3=>,end
 document.write(arr);//1=>,2=>,3=>,end
 ```
+
+### 4. Custom 404 with HttpListener 无效
+
+c# - Custom 404 with HttpListener - Stack Overflow
+https://stackoverflow.com/questions/18847301/custom-404-with-httplistener
+
+I'm having an issue with HttpListener, it's working just fine (including returning 404) but if i write anything to the output Stream (to return custom html for 404) then even if i set status code = 404 firebug displays status 200 ok, as soon as i remove the custom html it does see a 404 as expected.
+
+As is i get a 404, if i uncomment the 2 commented lines i get the HTML i want displayed but a 200 while i expect a 404 :
+
+```c#
+//var buffer = System.Text.Encoding.UTF8.GetBytes("<html><head></head><body><h1>404 not found</h1></body></html>");
+//ctx.Response.OutputStream.Write(buffer, 0, buffer.Length);
+ctx.Response.StatusCode = 404;
+```
+
+回答：
+
+Since the HTTP protocol requires that the status code be sent before the content, 
+once you write to the output stream, Status 200 is automatically sent for 
+you followed by whatever you write into the stream. If you try to set the 
+status code after writing to the output stream, it is already too late.

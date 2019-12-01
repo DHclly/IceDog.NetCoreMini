@@ -34,6 +34,10 @@ namespace IceDog.NetCoreMini.Core.Builder
                 //任务之后都选择将请求向后分发，同样会返回一个404响应。
                 RequestDelegate next = context => 
                 {
+                    //必须有这个更改状态码的语句，如果注释掉
+                    //同时没有注册任何中间件，则任然会返回200，但是输出是空白
+                    //当有中间件注册，如果有对输出流做任何更改，都会返回200，这里设置的404无效
+                    //可以查看这个问题 https://stackoverflow.com/questions/18847301/custom-404-with-httplistener
                     context.Response.StatusCode = 404;
                     return Task.CompletedTask;
                 };
