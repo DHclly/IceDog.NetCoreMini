@@ -21,7 +21,7 @@ namespace IceDog.NetCoreMini.Core.Builder
         /// <returns></returns>
         public RequestDelegate Build()
         {
-            //反转中间件列表的顺序
+            //反转中间件列表的顺序,当前是 Three 、Two、One 
             _middlewares.Reverse();
             //我在<步骤4.3>调用
             return httpContext =>
@@ -37,7 +37,6 @@ namespace IceDog.NetCoreMini.Core.Builder
                     context.Response.StatusCode = 404;
                     return Task.CompletedTask;
                 };
-
                 foreach (var middleware in _middlewares)
                 {
                     next = middleware(next);

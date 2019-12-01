@@ -107,6 +107,7 @@ namespace IceDog.NetCoreMini.WebServer
         };
         /// <summary>
         /// 
+        /// 
         /// </summary>
         /// <param name="next"></param>
         /// <returns></returns>
