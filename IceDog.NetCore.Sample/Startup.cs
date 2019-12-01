@@ -22,16 +22,33 @@ namespace IceDog.NetCore.Sample
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.Map("/test", builder =>
-            {
-                builder.Run(async (context)=> {
-                    await context.Response.WriteAsync("the path is /test");
-                });
-            });
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+
+            // one middleware
+            //app.Use((next) => async (httpContext) =>
+            //{
+            //    await httpContext.Response.WriteAsync("1=>");
+            //    await next(httpContext);
+            //});
+            app.UseOneMiddleware();
+
+            // two middleware
+            //app.Use((next) => async (httpContext) =>
+            //{
+            //    await httpContext.Response.WriteAsync("2=>");
+            //    await next(httpContext);
+            //});
+            app.UseTwoMiddleware();
+
+            // three middleware
+            //app.Use((next) => async (httpContext) =>
+            //{
+            //    await httpContext.Response.WriteAsync("3=>");
+            //    await next(httpContext);
+            //});
+            app.UseThreeMiddleware();
+
+            // helloworld middleware
+            app.Run(async httpContext => await httpContext.Response.WriteAsync("Hello World"));
         }
     }
 }

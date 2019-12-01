@@ -99,34 +99,68 @@ namespace IceDog.NetCoreMini.WebServer
         /// </summary>
         /// <param name="next"></param>
         /// <returns></returns>
+        //public static RequestDelegate OneMiddleware(RequestDelegate next)
+        //=> async context =>
+        //{
+        //    await context.Response.WriteAsync("1=>");
+        //    await next(context);
+        //};
         public static RequestDelegate OneMiddleware(RequestDelegate next)
-        => async context =>
         {
-            await context.Response.WriteAsync("1=>");
-            await next(context);
-        };
+            Console.WriteLine("执行 OneMiddleware 委托");
+            RequestDelegate requestDelegate = async delegate (HttpContext context)
+            {
+                Console.WriteLine("执行 OneMiddleware 返回的委托");
+                await context.Response.WriteAsync("1=>");
+                await next(context);
+            };
+            return requestDelegate;
+        }
+
         /// <summary>
         /// 
         /// 
         /// </summary>
         /// <param name="next"></param>
         /// <returns></returns>
+        //public static RequestDelegate TwoMiddleware(RequestDelegate next)
+        //=> async context =>
+        //{
+        //    await context.Response.WriteAsync("2=>");
+        //    await next(context);
+        //};
         public static RequestDelegate TwoMiddleware(RequestDelegate next)
-        => async context =>
         {
-            await context.Response.WriteAsync("2=>");
-            await next(context);
-        };
+            Console.WriteLine("执行 TwoMiddleware 委托");
+            return async context =>
+            {
+                Console.WriteLine("执行 TwoMiddleware 返回的委托");
+                await context.Response.WriteAsync("2=>");
+                await next(context);
+            };
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="next"></param>
         /// <returns></returns>
+        //public static RequestDelegate ThreeMiddleware(RequestDelegate next)
+        //=> async (context) =>
+        //  {
+        //      await context.Response.WriteAsync("3");
+        //      await next(context);
+        //  };
+
         public static RequestDelegate ThreeMiddleware(RequestDelegate next)
-        => async (context) =>
-          {
-              await context.Response.WriteAsync("3");
-              await next(context);
-          };
+        {
+            Console.WriteLine("执行 ThreeMiddleware 委托");
+            return async (context) =>
+            {
+                Console.WriteLine("执行 ThreeMiddleware 返回的委托");
+                await context.Response.WriteAsync("3");
+                await next(context);
+            };
+        }
     }
 }
